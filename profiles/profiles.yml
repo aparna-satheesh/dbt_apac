@@ -1,0 +1,11 @@
+ext:
+  outputs:
+    dev:
+      catalog: null
+      host: adb-6672695159677553.13.azuredatabricks.net
+      http_path: sql/protocolv1/o/6672695159677553/0323-073931-76x2xn72
+      schema: ext_test
+      threads: 1
+      token: dapi30457a0ee44cb47f6bb1db84560c7ebf
+      type: databricks
+  target: dev

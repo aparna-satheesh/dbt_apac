@@ -1,0 +1,19 @@
+
+version: 2
+sources:
+  - name: bronze
+    tables:
+      - name: order
+        external:
+          using: csv
+          options:
+            sep: ','
+            header: 'true'
+            path: 'abfss://testdemocontainer@dgbstdldev001.dfs.core.windows.net/testdemocontainer/dbt_external/bronze/order'
+      - name: orderitem
+        external:
+          using: csv
+          options:
+            sep: ','
+            header: 'true'
+            path: 'abfss://testdemocontainer@dgbstdldev001.dfs.core.windows.net/testdemocontainer/dbt_external/bronze/orderitem'
