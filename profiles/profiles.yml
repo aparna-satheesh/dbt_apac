@@ -3,7 +3,7 @@ ext:
     dev:
       catalog: null
       host: adb-XXXXXXXXXXXXX.13.azuredatabricks.net
-      http_path: sql/protocolv1/o/6672695159677553/XXXX-XXXXXX-XXXXXXXXXX
+      http_path: sql/protocolv1/o/XXXXXXXXXXXXXXXX/XXXX-XXXXXX-XXXXXXXXXX
       schema: ext_test
       threads: 1
       token: dapiXXXXXXXXXXXXXXXXXXXXXXXXXXXX
