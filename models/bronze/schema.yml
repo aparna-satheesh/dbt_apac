@@ -1,19 +1,92 @@
-
 version: 2
+
 sources:
-  - name: bronze
+  - name: order_details
+    schema: dbt
     tables:
       - name: order
         external:
-          using: csv
-          options:
-            sep: ','
-            header: 'true'
-            path: 'abfss://testdemocontainer@dgbstdldev001.dfs.core.windows.net/testdemocontainer/dbt_external/bronze/order'
-      - name: orderitem
+          location: 'dbfs:/mnt/dbt/bronze/order/'
+          using: delta
+          columns:
+          - name: order_id
+            data_type: int
+          - name: customer_id
+            data_type: int
+          - name: order_date
+            data_type: date
+          - name: order_status
+            data_type: string
+          - name: delivery_date
+            data_type: date
+          - name: payment_method
+            data_type: string
+      - name: item
         external:
-          using: csv
-          options:
-            sep: ','
-            header: 'true'
-            path: 'abfss://testdemocontainer@dgbstdldev001.dfs.core.windows.net/testdemocontainer/dbt_external/bronze/orderitem'
+          location: 'dbfs:/mnt/dbt/bronze/item/'
+          using: delta
+          columns:
+          - name: order_id
+            data_type: int
+          - name: order_item_id
+            data_type: string
+          - name: product_id
+            data_type: int
+          - name: quantity
+            data_type: int
+          - name: unitprice
+            data_type: double
+          - name: discount
+            data_type: double
+          - name: total_amount
+            data_type: double
+      - name: customer
+        external:
+          location: 'dbfs:/mnt/dbt/bronze/customer/'
+          using: delta
+          columns:
+          - name: customer_id
+            data_type: int
+          - name: first_name
+            data_type: string
+          - name: last_name
+            data_type: string
+          - name: email
+            data_type: string
+          - name: phone
+            data_type: long
+          - name: city
+            data_type: string
+          - name: state
+            data_type: string
+          - name: zip
+            data_type: integer
+          - name: source
+            data_type: integer
+      - name: source
+        external:
+          location: 'dbfs:/mnt/dbt/bronze/source/'
+          using: delta
+          columns:
+          - name: customer_id
+            data_type: int
+          - name: first_name
+            data_type: string
+      - name: product
+        external:
+          location: 'dbfs:/mnt/dbt/bronze/product/'
+          using: delta
+          columns:
+          - name: product_id
+            data_type: int
+          - name: product_name
+            data_type: string
+          - name: brand_name
+            data_type: string
+          - name: category
+            data_type: string
+          - name: unitprice
+            data_type: int
+          - name: stock
+            data_type: int
+        
